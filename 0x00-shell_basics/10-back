@@ -1,2 +1,2 @@
 #!/bin/bash
-cd /home/vagrant/holberton-system_engineering-devops 
+cd - /home/vagrant/holberton-system_engineering-devops  
