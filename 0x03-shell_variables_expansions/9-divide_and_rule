@@ -1,2 +1,2 @@
 #!/bin/bash
-eco "$((POWER/DIVIDE))" 
+eco -e "$((POWER/DIVIDE))" 
