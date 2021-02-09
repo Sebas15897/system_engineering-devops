@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This scripts displays all processes in a user format with hierarchy
+ps -auxf
