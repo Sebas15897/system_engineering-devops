@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+Host holberton
+    HostName 35.185.118.130
+        Uuser ubuntu
+	    IdentityFile ~/.ssh/holberton
