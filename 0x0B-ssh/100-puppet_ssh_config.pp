@@ -4,7 +4,7 @@ file {'~/.ssh/config':
   replace => 'yes',
   path    => '~/.ssh/config',
   content => 'Host *
-     HostName 34.73.207.1
+     HostName 35.185.118.130
      User root
      IdentityFile ~/.ssh/holberton',
   mode    => '7000',
