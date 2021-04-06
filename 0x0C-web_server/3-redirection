@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Install nginx web server with the following requirements:
+# Return a page that contains the string "Holberton School" on requests
+# Configure nginx server to redirect /redirect_me to another page
+# The redirection is a "301 Moved Permanently"
+apt -y update
+apt install -y nginx
+echo "Holberton School" > /var/www/html/index.html
+sed -i 's/root \/var\/www\/html;/root \/var\/www\/html;\n\trewrite ^\/redirect_me http:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;/' /etc/nginx/sites-available/default
+service nginx restart
