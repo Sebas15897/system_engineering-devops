@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
-# Nginx server to have a custom 404 page
-sudo apt-get -y update
-sudo apt-get -y install nginx
-echo "Holberton School" > /var/www/html/index.nginx-debian.html
-URL="\\\trewrite ^/redirect_me https://github.com/Sebas15897 permanent;"
-sudo sed -i "42i $URL" /etc/nginx/sites-available/default
-sudo sed -i '/server_name _/a error_page 404 /404.html; location = /404.html {root /var/www/error/;internal; }' /etc/nginx/sites-available/default
-sudo sed -i "44i $str" /etc/nginx/sites-available/default
+# Install nginx web server with the following requirements:
+# Listen on port 80
+# Return a page that contains the string "Holberton School" on requests
+# Configure nginx server to redirect /redirect_me to another page
+# The redirection is a "301 Moved Permanently"
+# Configure ngix server to have a custom 404 page
+apt -y update
+apt install -y nginx
+echo "Holberton School" > /var/www/html/index.html
+echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+sed -i 's/root \/var\/www\/html;/root \/var\/www\/html;\n\trewrite ^\/redirect_me http:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;/' /etc/nginx/sites-available/default
+sed -i 's/root \/var\/www\/html;/root \/var\/www\/html;\n\terror_page 404 \/custom_404.html;/' /etc/nginx/sites-available/default
 service nginx restart
