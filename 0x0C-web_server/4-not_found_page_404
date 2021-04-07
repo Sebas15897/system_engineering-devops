@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
-# configurea Ubuntu machine with Ngin-X with a custom 404 page
-
+# Not found page 404
 sudo apt-get -y update
 sudo apt-get -y install nginx
-sudo ufw allow 'Nginx HTTP'
 echo "Holberton School" > /var/www/html/index.nginx-debian.html
-sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://github.com/Sebas15897 permanent;' /etc\
-/nginx/sites-available/default
-echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom_404.html
-sed -i '/server_name _;/a error_page 404 /custom_404.html;\nlocation = /custom_404.html {\nroot /usr/share/nginx/html;\\
-ninternal;\n}' /etc/nginx/sites-available/default
-sudo service nginx restart
+echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+ns="\\\trewrite ^/redirect_me https://media.giphy.com/media/wW95fEq09hOI8/giphy.gif permanent;"
+sudo sed -i "42i $ns" /etc/nginx/sites-available/default
+str="\\\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}\n"
+sudo sed -i "44i $str" /etc/nginx/sites-available/default
+sudo service nginx start
