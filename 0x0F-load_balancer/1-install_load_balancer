@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Script to install and configure HAproxy
+sudo apt-get -y update
+# Install HA Proxy
+sudo apt-get -y install haproxy
+# Enable to HA Proxy to start at boot
+sudo echo "ENABLED=1" >> /etc/default/haproxy
+
+sudo echo "
+frontend web-frontend
+	 bind *:80
+	 mode http
+	 default_backend web-backend
+ backend web-backend
+ balance roundrobin
+ server 2230-web-01 34.74.186.8 check
+ server 2230-web-02 54.172.221.24 check
+" >> /etc/haproxy/haproxy.cfg
+sudo service haproxy restart
