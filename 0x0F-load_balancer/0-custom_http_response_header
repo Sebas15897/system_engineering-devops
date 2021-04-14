@@ -8,4 +8,4 @@ sudo service nginx restart
 echo "Ceci n'est pas une page" > /var/www/html/404.html
 sed -i "/server_name _;/a error_page 404 /404.html;" /etc/nginx/sites-available/default
 sed -i "/server_name _;/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default
-sudo service nginx restar
+sudo service nginx restart
