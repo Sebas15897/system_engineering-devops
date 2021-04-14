@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Nginx likes port 80
+# /s: search and replace the pattern regexp
+# /g: stands for global, which means that all matching occurrences
+# in the line would be replaced
+#!/usr/bin/env bash
+# Command to make an nginx server listen on port 80
+apt-get -y update
+apt-get -y install nginx
+ufw allow 'Nginx HTTP'
+sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+service nginx start
